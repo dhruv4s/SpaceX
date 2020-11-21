@@ -1,0 +1,66 @@
+<div class="main">
+  <h2>SpaceX Launch Programs</h2>
+  <div class="filerGrid">
+    <div class="filter">
+      <div>Filters</div>
+      <div class="filterHeads">
+        <div class="filterTitle">Launch Year</div>
+        <div class="buttonAllign">
+          <button *ngFor="let year of yearArray" class="button" [ngClass]="{'buttonActive':year.active == true}" (click)="yearSelect(year)">
+            {{ year.year }}
+          </button>
+        </div>
+      </div>
+      <div class="filterHeads extra">
+        <div class="filterTitle">Successful Launch</div>
+        <div class="buttonAllign">
+          <button *ngFor="let launch of launchArray" class="button" [ngClass]="{'buttonActive':launch.active == true}"
+          (click)="launchSelect(launch)" >{{ launch.value }}</button>
+        </div>
+      </div>
+      <div class="filterHeads extra">
+        <div class="filterTitle">Successful Landing</div>
+        <div class="buttonAllign">
+          <button *ngFor="let land of landArray" class="button" [ngClass]="{'buttonActive':land.active == true}"
+          (click)="landSelect(land)">{{ land.value }}</button>
+        </div>
+      </div>
+    </div>
+    <div class="programGrid">
+      <div *ngFor="let launch of launchDetailArray" class="launchCard">
+        <!-- <img [src]="launch.links.mission_patch_small"> -->
+        <div class="missionPatch">
+          <img src="../../assets/images/falcon2.png" class="missionImg" />
+        </div>
+        <div class="missionInfo">
+        <div class="missionName">
+          <span> {{ launch.mission_name }} </span> #{{ launch.flight_number }}
+        </div>
+        <div class="missionId">
+          <div class="detailId">Mission Ids:</div>
+          <div *ngIf="launch.mission_id.length>0">
+            <ul>
+              <li *ngFor="let item of launch.mission_id" id="idList" class="detail listId">
+                {{ item }}
+              </li>
+            </ul>
+          </div>
+          <div id="launchYear" class="detail">
+            <span>Launch Year: </span> <span class="detailInfo">{{ launch.launch_year }}</span> 
+          </div>
+          <div id="launchSuccess" class="detail">
+            <span>Successful Launch: </span> <span class="detailInfo">{{ launch.launch_success }}</span> 
+
+          </div>
+          <div id="launchFail" class="detail">
+            <span>Successful Landing: </span> <span class="detailInfo">{{ launch.launch_landing }}</span> 
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+      <span>Developed By: </span> <span class="footerInfo">&nbsp;Dhruv Sharma</span>
+  </div>
+</div>

@@ -1,0 +1,217 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* variables */
+:root {
+  --bg-color: #efefef;
+  --filter-color: #c8dbba;
+  --filter-selected: #6ea646;
+  --text-color: #000000;
+  --info-color: #0600c2;
+  --card-bgcolor: #fff;
+}
+
+/* base styles */
+body {
+  background: var(--bg-color);
+  overflow-x: hidden;
+  font-family: "Roboto";
+}
+
+/* fonts */
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/Roboto-Black.ttf");
+}
+
+@font-face {
+  font-family: "Roboto Light";
+  src: url("assets/fonts/Roboto-Light.ttf");
+}
+
+/* mobile styles */
+.main {
+  margin: 0 10px;
+}
+
+.filerGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 50px;
+  margin-top: 6px;
+}
+
+.filter {
+  background-color: var(--card-bgcolor);
+  padding: 12px 12px 30px 12px;
+  border-radius: 5px;
+}
+
+.filterHeads {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.buttonAllign {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  column-gap: 30px;
+}
+
+.extra {
+  margin-top: 15px;
+}
+
+.button {
+  border: none;
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 5px;
+  background: var(--filter-color);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.buttonActive {
+  background: var(--filter-selected);
+}
+
+.launchCard {
+  background-color: var(--card-bgcolor);
+  border-radius: 5px;
+}
+
+.programGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.missionPatch {
+  background-color: var(--bg-color);
+  margin: 12px;
+}
+
+.missionImg {
+  width: 100%;
+  height: auto;
+}
+
+.missionInfo {
+    margin: 12px;
+}
+
+.missionName {
+    color: var(--info-color);
+}
+
+.idList{
+    margin-left: 30px;
+}
+.detailId {
+  margin-top: 15px;
+} 
+
+.detail {
+  margin-top: 8px;
+}
+
+.detailInfo {
+  color: var(--info-color);
+  font-family: 'Roboto-Light';
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerInfo {
+  font-family: 'Roboto-Light';
+}
+
+.filterTitle {
+  border-bottom: 3px solid var(--bg-color);
+  margin-bottom: 10px;
+}
+
+.listId {
+  margin-left: 30px;
+}
+
+
+/* tab styles */
+@media screen and (min-width: 701px) {
+  .filerGrid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+    margin-top: 6px;
+  }
+
+  .filter {
+    background-color: var(--card-bgcolor);
+    padding: 12px 12px 30px 12px;
+    border-radius: 5px;
+    grid-column: 1/2;
+    height: fit-content;
+  }
+
+  .programGrid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    grid-column: 2/4;
+  }
+}
+
+/* desktop styles */
+@media screen and (min-width: 1025px) {
+  .filerGrid {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+    margin-top: 6px;
+  }
+
+  .filter {
+    background-color: var(--card-bgcolor);
+    padding: 12px 12px 30px 12px;
+    border-radius: 5px;
+    grid-column: 1/2;
+    height: fit-content;
+  }
+
+  .programGrid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    grid-column: 2/6;
+  }
+}
+
+/* over desktop styles */
+@media screen and (min-width: 1441px) {
+  .main {
+    max-width: 1440px;
+  }
+}
