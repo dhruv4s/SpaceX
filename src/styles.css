@@ -107,19 +107,19 @@ body {
 }
 
 .missionInfo {
-    margin: 12px;
+  margin: 12px;
 }
 
 .missionName {
-    color: var(--info-color);
+  color: var(--info-color);
 }
 
-.idList{
-    margin-left: 30px;
+.idList {
+  margin-left: 30px;
 }
 .detailId {
   margin-top: 15px;
-} 
+}
 
 .detail {
   margin-top: 8px;
@@ -127,7 +127,7 @@ body {
 
 .detailInfo {
   color: var(--info-color);
-  font-family: 'Roboto-Light';
+  font-family: "Roboto-Light";
 }
 
 .footer {
@@ -144,7 +144,7 @@ body {
 }
 
 .footerInfo {
-  font-family: 'Roboto-Light';
+  font-family: "Roboto-Light";
 }
 
 .filterTitle {
@@ -156,12 +156,11 @@ body {
   margin-left: 30px;
 }
 
-
 /* tab styles */
 @media screen and (min-width: 701px) {
   .filerGrid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin-bottom: 50px;
     margin-top: 6px;
@@ -177,7 +176,7 @@ body {
 
   .programGrid {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     grid-column: 2/4;
   }
@@ -187,7 +186,7 @@ body {
 @media screen and (min-width: 1025px) {
   .filerGrid {
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     margin-bottom: 50px;
     margin-top: 6px;
@@ -203,7 +202,7 @@ body {
 
   .programGrid {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     grid-column: 2/6;
   }
@@ -213,5 +212,9 @@ body {
 @media screen and (min-width: 1441px) {
   .main {
     max-width: 1440px;
+  }
+  .mainDiv {
+    display: flex;
+    justify-content: center;
   }
 }
