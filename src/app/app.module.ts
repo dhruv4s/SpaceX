@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { BrowserTransferStateModule } from '@angular/platform-browser'
 import { SpaceXLaunchProgramsComponent } from './space-x-launch-programs/space-x-launch-programs.component';
+import { BrowserStateInterceptor } from './browserstate.interceptor';
 
 @NgModule({
   declarations: [
@@ -13,9 +15,15 @@ import { SpaceXLaunchProgramsComponent } from './space-x-launch-programs/space-x
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule,HttpClientModule
+    AppRoutingModule,HttpClientModule,BrowserTransferStateModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BrowserStateInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
