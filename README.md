@@ -28,4 +28,13 @@ HTML5,CSS3, Typescript
 2. Check that proper Angular and Node versions are installed.
 3. Inside the project folder run 'npm i' command to install all the node modules related to the project.
 4. For dev build, from terminal run command 'npm run dev:ssr' and after the build is over hit 'https://localhost:4200'.
-5. For prod build, from terminal run command 'npm run build:ssr' and after the build is over hit 'https://localhost:4000'.
+5. For prod build, from terminal run command 'npm run build:ssr' and after the build is over hit
+   'https://localhost:4000'.
+
+## Lighthouse Scores
+
+![lighthousedDsk1](https://user-images.githubusercontent.com/74617117/99904044-85967200-2cee-11eb-89fe-d53cec71109f.PNG)
+
+## Deployed Instance URL
+
+https://spacexprojects.herokuapp.com/
