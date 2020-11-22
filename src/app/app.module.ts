@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { BrowserTransferStateModule } from '@angular/platform-browser'
 import { SpaceXLaunchProgramsComponent } from './space-x-launch-programs/space-x-launch-programs.component';
 import { BrowserStateInterceptor } from './browserstate.interceptor';
+import { SpaceXLaunchProgramsService } from './space-x-launch-programs/space-x-launch-programs.service'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { BrowserStateInterceptor } from './browserstate.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: BrowserStateInterceptor,
       multi: true,
-    }
+    },SpaceXLaunchProgramsService
   ],
   bootstrap: [AppComponent]
 })

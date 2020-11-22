@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
+import { SpaceXLaunchProgramsService } from './space-x-launch-programs.service';
 
 @Component({
   selector: 'app-space-x-launch-programs',
@@ -32,28 +32,28 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
   ];
 
   launchArray = [
-    { value: 'True', parseValue:'true' ,active: false },
-    { value: 'False', parseValue:'false' ,active: false },
+    { value: 'True', parseValue: 'true', active: false },
+    { value: 'False', parseValue: 'false', active: false },
   ];
 
   landArray = [
-    { value: 'True', parseValue:'true' ,active: false },
-    { value: 'False', parseValue:'false',active: false },
+    { value: 'True', parseValue: 'true', active: false },
+    { value: 'False', parseValue: 'false', active: false },
   ];
 
-  launchDetailArray: any;
+  launchDetailArray: any=[];
 
-  constructor(private http: HttpClient, private location: Location) {}
+  constructor(
+    private location: Location,
+    private spacexService: SpaceXLaunchProgramsService
+  ) {}
 
   ngOnInit(): void {
-    this.http
-      .get(`https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}`)
-      .subscribe((response) => {
-        this.launchDetailArray = response;
-      });
+    this.updateData();
   }
 
   yearSelect(item: any) {
+    this.dataLimit=40;
     this.yearSelected = '';
     if (!item.active) {
       this.yearSelected = item.year;
@@ -65,9 +65,11 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
     item.active = !item.active;
     this.yearArray.splice(index, 1, item);
     this.updateData();
+    this.updateLocation();
   }
 
   launchSelect(item: any) {
+    this.dataLimit=40;
     this.launchSelected = '';
     if (!item.active) {
       this.launchSelected = item.parseValue;
@@ -79,9 +81,11 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
     item.active = !item.active;
     this.launchArray.splice(index, 1, item);
     this.updateData();
+    this.updateLocation();
   }
 
   landSelect(item: any) {
+    this.dataLimit=40;
     this.landSelected = '';
     if (!item.active) {
       this.landSelected = item.parseValue;
@@ -93,121 +97,33 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
     item.active = !item.active;
     this.landArray.splice(index, 1, item);
     this.updateData();
+    this.updateLocation();
   }
 
-  updateData() {
-    if (
-      this.yearSelected != '' &&
-      this.launchSelected != '' &&
-      this.landSelected != ''
-    ) {
-      this.location.go(
-        `launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
-      );
-      this.http
-        .get(
-          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
-        )
-        .subscribe((response) => {
-          this.launchDetailArray = response;
-        });
-    } else if (
-      this.yearSelected != '' &&
-      this.launchSelected != '' &&
-      this.landSelected == ''
-    ) {
-      this.location.go(
-        `launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&launch_year=${this.yearSelected}`
-      );
-      this.http
-        .get(
-          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&launch_year=${this.yearSelected}`
-        )
-        .subscribe((response) => {
-          this.launchDetailArray = response;
-        });
-    } else if (
-      this.yearSelected != '' &&
-      this.launchSelected == '' &&
-      this.landSelected != ''
-    ) {
-      this.location.go(
-        `launches?limit=${this.dataLimit}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
-      );
-      this.http
-        .get(
-          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
-        )
-        .subscribe((response) => {
-          this.launchDetailArray = response;
-        });
-    } else if (
-      this.yearSelected == '' &&
-      this.launchSelected != '' &&
-      this.landSelected != ''
-    ) {
-      this.location.go(
-        `launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&land_success=${this.landSelected}`
-      );
-      this.http
-        .get(
-          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&land_success=${this.landSelected}`
-        )
-        .subscribe((response) => {
-          this.launchDetailArray = response;
-        });
-    } else if (
-      this.yearSelected != '' &&
-      this.launchSelected == '' &&
-      this.landSelected == ''
-    ) {
-      this.location.go(`launches?limit=${this.dataLimit}&launch_year=${this.yearSelected}`);
-      this.http
-        .get(
-          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_year=${this.yearSelected}`
-        )
-        .subscribe((response) => {
-          this.launchDetailArray = response;
-        });
-    } else if (
-      this.yearSelected == '' &&
-      this.launchSelected != '' &&
-      this.landSelected == ''
-    ) {
-      this.location.go(
-        `launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}`
-      );
-      this.http
-        .get(
-          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}`
-        )
-        .subscribe((response) => {
-          this.launchDetailArray = response;
-        });
-    } else if (
-      this.yearSelected == '' &&
-      this.launchSelected == '' &&
-      this.landSelected != ''
-    ) {
-      this.location.go(`launches?limit=${this.dataLimit}&land_success=${this.landSelected}`);
-      this.http
-        .get(
-          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&land_success=${this.landSelected}`
-        )
-        .subscribe((response) => {
-          this.launchDetailArray = response;
-        });
-    } else if (
-      this.yearSelected == '' &&
-      this.launchSelected == '' &&
-      this.landSelected == ''
-    ) {
-      this.location.go(``);
-      this.http
-        .get('https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}')
-        .subscribe((response) => {
-          this.launchDetailArray = response;
-        });
+  updateLocation() {
+    let location = `launches?limit=${this.dataLimit}`;
+    if (this.launchSelected != '') {
+      location = location + `&launch_success=${this.launchSelected}`;
     }
+    if (this.landSelected != '') {
+      location = location + `&land_success=${this.landSelected}`;
+    }
+    if (this.yearSelected != '') {
+      location = location + `&launch_year=${this.yearSelected}`;
+    }
+    this.location.go(location);
+  }
+  
+  updateData() {
+    this.spacexService
+      .getAllPrograms(
+        this.dataLimit,
+        this.yearSelected,
+        this.launchSelected,
+        this.landSelected
+      )
+      .subscribe((response) => {
+        this.launchDetailArray = response;
+      });
   }
 }
