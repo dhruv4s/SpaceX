@@ -49,8 +49,9 @@
           <div class="missionPatch">
             <img
               alt="Mission Patch"
-              [src]="launch.links.mission_patch_small"
-              width="360" height="360" class="missionImg"
+              
+              data-src="{{launch.links.mission_patch_small}}"
+              width="360" height="360" class="missionImg lazyload"
             />
           </div>
           <div class="missionInfo">
