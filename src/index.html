@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="SpaceX App">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preload" as="font" href="assets/fonts/Roboto-Black.ttf" crossorigin="anonymous">
-  <link rel="preload" as="font" href="assets/fonts/Roboto-Light.ttf" crossorigin="anonymous">
+  <link rel="prefetch" as="font" href="assets/fonts/Roboto-Black.ttf" crossorigin="anonymous">
+  <link rel="prefetch" as="font" href="assets/fonts/Roboto-Light.ttf" crossorigin="anonymous">
   <style type="text/css">
   /* reset */
 * {
@@ -40,11 +40,13 @@ body {
 @font-face {
   font-family: "Roboto";
   src: url("assets/fonts/Roboto-Black.ttf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Roboto Light";
   src: url("assets/fonts/Roboto-Light.ttf");
+  font-display: swap;
 }
 
 /* mobile styles */
