@@ -11,6 +11,7 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
   yearSelected: any = '';
   launchSelected: any = '';
   landSelected: any = '';
+  dataLimit: any = 100;
 
   yearArray = [
     { year: '2006', active: false },
@@ -31,13 +32,13 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
   ];
 
   launchArray = [
-    { value: 'True', active: false },
-    { value: 'false', active: false },
+    { value: 'True', parseValue:'true' ,active: false },
+    { value: 'False', parseValue:'false' ,active: false },
   ];
 
   landArray = [
-    { value: 'True', active: false },
-    { value: 'false', active: false },
+    { value: 'True', parseValue:'true' ,active: false },
+    { value: 'False', parseValue:'false',active: false },
   ];
 
   launchDetailArray: any;
@@ -46,7 +47,7 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get('https://api.spaceXdata.com/v3/launches?limit=10')
+      .get(`https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}`)
       .subscribe((response) => {
         this.launchDetailArray = response;
       });
@@ -69,7 +70,7 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
   launchSelect(item: any) {
     this.launchSelected = '';
     if (!item.active) {
-      this.launchSelected = item.value;
+      this.launchSelected = item.parseValue;
       this.launchArray.forEach((element) => {
         element.active = false;
       });
@@ -83,7 +84,7 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
   landSelect(item: any) {
     this.landSelected = '';
     if (!item.active) {
-      this.landSelected = item.value;
+      this.landSelected = item.parseValue;
       this.landArray.forEach((element) => {
         element.active = false;
       });
@@ -101,11 +102,11 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
       this.landSelected != ''
     ) {
       this.location.go(
-        `launches?limit=10&launch_success=${this.launchSelected}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
+        `launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
       );
       this.http
         .get(
-          `https://api.spaceXdata.com/v3/launches?limit=10&launch_success=${this.launchSelected}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
+          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
         )
         .subscribe((response) => {
           this.launchDetailArray = response;
@@ -116,11 +117,11 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
       this.landSelected == ''
     ) {
       this.location.go(
-        `launches?limit=10&launch_success=${this.launchSelected}&launch_year=${this.yearSelected}`
+        `launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&launch_year=${this.yearSelected}`
       );
       this.http
         .get(
-          `https://api.spaceXdata.com/v3/launches?limit=10&launch_success=${this.launchSelected}&launch_year=${this.yearSelected}`
+          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&launch_year=${this.yearSelected}`
         )
         .subscribe((response) => {
           this.launchDetailArray = response;
@@ -131,11 +132,11 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
       this.landSelected != ''
     ) {
       this.location.go(
-        `launches?limit=10&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
+        `launches?limit=${this.dataLimit}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
       );
       this.http
         .get(
-          `https://api.spaceXdata.com/v3/launches?limit=10&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
+          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&land_success=${this.landSelected}&launch_year=${this.yearSelected}`
         )
         .subscribe((response) => {
           this.launchDetailArray = response;
@@ -146,11 +147,11 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
       this.landSelected != ''
     ) {
       this.location.go(
-        `launches?limit=10&launch_success=${this.launchSelected}&land_success=${this.landSelected}`
+        `launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&land_success=${this.landSelected}`
       );
       this.http
         .get(
-          `https://api.spaceXdata.com/v3/launches?limit=10&launch_success=${this.launchSelected}&land_success=${this.landSelected}`
+          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}&land_success=${this.landSelected}`
         )
         .subscribe((response) => {
           this.launchDetailArray = response;
@@ -160,10 +161,10 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
       this.launchSelected == '' &&
       this.landSelected == ''
     ) {
-      this.location.go(`launches?limit=10&launch_year=${this.yearSelected}`);
+      this.location.go(`launches?limit=${this.dataLimit}&launch_year=${this.yearSelected}`);
       this.http
         .get(
-          `https://api.spaceXdata.com/v3/launches?limit=10&launch_year=${this.yearSelected}`
+          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_year=${this.yearSelected}`
         )
         .subscribe((response) => {
           this.launchDetailArray = response;
@@ -174,11 +175,11 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
       this.landSelected == ''
     ) {
       this.location.go(
-        `launches?limit=10&launch_success=${this.launchSelected}`
+        `launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}`
       );
       this.http
         .get(
-          `https://api.spaceXdata.com/v3/launches?limit=10&launch_success=${this.launchSelected}`
+          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&launch_success=${this.launchSelected}`
         )
         .subscribe((response) => {
           this.launchDetailArray = response;
@@ -188,10 +189,10 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
       this.launchSelected == '' &&
       this.landSelected != ''
     ) {
-      this.location.go(`launches?limit=10&land_success=${this.landSelected}`);
+      this.location.go(`launches?limit=${this.dataLimit}&land_success=${this.landSelected}`);
       this.http
         .get(
-          `https://api.spaceXdata.com/v3/launches?limit=10&land_success=${this.landSelected}`
+          `https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}&land_success=${this.landSelected}`
         )
         .subscribe((response) => {
           this.launchDetailArray = response;
@@ -203,7 +204,7 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
     ) {
       this.location.go(``);
       this.http
-        .get('https://api.spaceXdata.com/v3/launches?limit=10')
+        .get('https://api.spaceXdata.com/v3/launches?limit=${this.dataLimit}')
         .subscribe((response) => {
           this.launchDetailArray = response;
         });

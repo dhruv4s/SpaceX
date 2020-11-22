@@ -1,27 +1,28 @@
 # SpaceX
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+A server side rendered SPA using Angular.
 
-## Development server
+## Approach
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This SPA is created with a mobile first design approach meaning that the page was designed starting with mobile screen
+layout and then gradually for larger screens. 
 
-## Code scaffolding
+Angular Universal was used as a boiler plate for server side rendering. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+CSS grid has been used as a basic design layout as it is responsive, hence suitable for all screen sizes.
 
-## Build
+## Stack Details
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Angular - 11.0.2
+Node.js - 15.2.1
+HTML5,CSS3, Typescript
 
-## Running unit tests
+![angularCli](https://user-images.githubusercontent.com/74617117/99897168-44399e80-2cbd-11eb-8517-010594e3b66d.PNG)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Setup Instructions
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Clone the github project.
+2. Check that proper Angular and Node versions are installed.
+3. Inside the project folder run 'npm i' command to install all the node modules related to the project.
+4. For dev build, from terminal run command 'npm run dev:ssr' and after the build is over hit 'https://localhost:4200'.
+5. For prod build, from terminal run command 'npm run build:ssr' and after the build is over hit 'https://localhost:4000'.
