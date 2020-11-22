@@ -11,7 +11,7 @@ export class SpaceXLaunchProgramsComponent implements OnInit {
   yearSelected: any = '';
   launchSelected: any = '';
   landSelected: any = '';
-  dataLimit: any = 12;
+  dataLimit: any = 10;
 
   yearArray = [
     { year: '2006', active: false },
