@@ -1,0 +1,62 @@
+/* tab styles */
+@media screen and (min-width: 701px) {
+  .filerGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+    margin-top: 6px;
+  }
+
+  .filter {
+    background-color: var(--card-bgcolor);
+    padding: 12px 12px 30px 12px;
+    border-radius: 5px;
+    grid-column: 1/2;
+    height: fit-content;
+  }
+
+  .programGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-column: 2/4;
+  }
+}
+
+/* desktop styles */
+@media screen and (min-width: 1025px) {
+  .filerGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 50px;
+    margin-top: 6px;
+  }
+
+  .filter {
+    background-color: var(--card-bgcolor);
+    padding: 12px 12px 30px 12px;
+    border-radius: 5px;
+    grid-column: 1/2;
+    height: fit-content;
+  }
+
+  .programGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    grid-column: 2/6;
+  }
+}
+
+/* over desktop styles */
+@media screen and (min-width: 1441px) {
+  .main {
+    max-width: 1440px;
+  }
+  .mainDiv {
+    display: flex;
+    justify-content: center;
+  }
+}
