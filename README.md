@@ -14,8 +14,11 @@ CSS grid has been used as a basic design layout as it is responsive, hence suita
 ## Stack Details
 
 Angular - 11.0.2
+
 Node.js - 15.2.1
+
 HTML5,CSS3, Typescript
+
 
 ![angularCli](https://user-images.githubusercontent.com/74617117/99897168-44399e80-2cbd-11eb-8517-010594e3b66d.PNG)
 
