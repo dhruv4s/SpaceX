@@ -37,4 +37,4 @@ HTML5,CSS3, Typescript
 
 ## Deployed Instance URL
 
-https://spacexprojects.herokuapp.com/
+https://appspacex.netlify.app/
